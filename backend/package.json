@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-  "build": "tsc",
-  "start": "node dist/index.js",
-  "test": "echo \"Error: no test specified\" && exit 1"
-  }
-,
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -21,8 +20,11 @@
     "express": "^4.21.0",
     "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.9.0",
     "mongoose": "^8.6.3",
-    "openai": "^4.62.1"
+    "morgan": "^1.10.0",
+    "openai": "^4.62.1",
+    "pg": "^8.13.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

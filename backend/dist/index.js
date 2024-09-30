@@ -3,19 +3,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const app = (0, express_1.default)();
-const port = 3000;
-// GET request to the root of the server
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+const app_js_1 = __importDefault(require("./app.js"));
+const morgan_1 = __importDefault(require("morgan"));
+const index_js_1 = __importDefault(require("./routes/index.js"));
+app_js_1.default.use((0, morgan_1.default)("dev"));
+const port = 3002;
+const { Client } = require('pg');
+app_js_1.default.use("api/v1", index_js_1.default);
+const client = new Client({
+    host: 'localhost',
+    user: 'postgres',
+    port: '5432',
+    password: '123456',
+    database: 'postgres'
 });
-// GET request to /hello
-app.get('/hello', (req, res) => {
-    res.send('Hello from /hello!');
+client.connect();
+client.query('Select NOW(); ', (err, res) => {
+    if (!err) {
+        console.log(res);
+    }
+    else {
+        console.log(err.message);
+    }
+    client.end();
 });
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-    console.log('Press Ctrl+C to quit.');
+app_js_1.default.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
 //# sourceMappingURL=index.js.map
