@@ -1,5 +1,11 @@
-import exp from "constants";
-import { Router } from "express";
-const userRoutes = Router();
+import express from 'express';
+import * as userController from '../controllers/user-controller.js';
 
-export default userRoutes;
+const router = express.Router();
+
+router.post('/', userController.createUser);
+router.get('/:id', userController.getUserById);
+router.get('/',userController.getAllUsers);
+
+
+export default router;

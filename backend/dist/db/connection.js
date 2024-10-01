@@ -1,21 +1,16 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const { Client } = require('pg');
-const client = new Client({
+const pg_1 = __importDefault(require("pg"));
+const { Pool } = pg_1.default;
+const pool = new Pool({
     host: 'localhost',
     user: 'postgres',
     port: '5432',
     password: '123456',
-    database: 'postgres'
+    database: 'chat_app'
 });
-client.connect();
-client.query('SELECT * FROM users', (err, res) => {
-    if (!err) {
-        console.log(res.rows);
-    }
-    else {
-        console.log(err.message);
-    }
-    client.end();
-});
+exports.default = pool;
 //# sourceMappingURL=connection.js.map
