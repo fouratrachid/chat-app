@@ -3,9 +3,8 @@ import * as userController from '../controllers/user-controller.js';
 
 const router = express.Router();
 
-router.post('/', userController.createUser);
+router.post('/signup', userController.createUser);
 router.get('/:id', userController.getUserById);
 router.get('/',userController.getAllUsers);
 
-
-export default router;
+export default router; 

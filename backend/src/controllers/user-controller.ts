@@ -17,7 +17,7 @@ export const getUserById = async (req, res, next) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-        res.json(user);
+        res.status(200).json(user);
     } catch (error) {
         next(error);
     }
@@ -26,7 +26,7 @@ export const getUserById = async (req, res, next) => {
 export const getAllUsers = async (req, res, next) => {
     try {
         const users = await UserModel.getAllUsers();
-        res.json(users);
+        res.status(200).json(users);
     } catch (error) {
         next(error);
     }

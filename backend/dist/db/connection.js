@@ -12,5 +12,8 @@ const pool = new Pool({
     password: '123456',
     database: 'chat_app'
 });
+pool.on('connect', () => {
+    console.log('Connected to the database');
+});
 exports.default = pool;
 //# sourceMappingURL=connection.js.map
